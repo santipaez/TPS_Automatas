@@ -1,36 +1,54 @@
-import option1, option2, option3, option4, option5, option6
+import pandas as pd
+from option1 import list_top_songs
+from option2 import list_best_ratio
+from option3 import search_song
+from option4 import add_new_song
+from option5 import list_longest_songs
+from option6 import list_top_artists
+import os, constants
+
+# Cargar el archivo Excel
+data = pd.read_excel("songs2023.xlsx")
 
 while True:
-    print("Menú:")
+    print(f"{constants.BLUE}")
+    print("Menú de Opciones:")
     print("1. Listar las 5 canciones con más likes, vistas y comentarios")
-    print("2. Listar las 5 canciones con mejor ratio (likes/view) y mostrar el porcentaje")
-    print("3. Buscar una canción")
+    print("2. Listar las 5 canciones con mejor ratio (likes/view), mostrar el porcentaje")
+    print("3. Buscar una canción (puedo poner solo una parte)")
     print("4. Agregar nueva fila")
-    print("5. Listar las 10 canciones más largas en formato legible")
+    print("5. Listar las 10 canciones que más duración tienen y mostrar cual es el tiempo en formato legible (MM:SS)")
     print("6. Listar los 10 artistas con más reproducciones en total")
-    print("0. Salir")
+    print("7. Salir")
+    print(f"{constants.RESET}")
 
-    opcion = input("Seleccione una opción: ")
+    option = input("Seleccione una opción: ")
 
-    if opcion == "1":
-        option1.listar_top_canciones()
-    elif opcion == "2":
-        # Implementa la lógica para listar las 5 canciones con mejor ratio y mostrar el porcentaje
-        pass
-    elif opcion == "3":
-        # Implementa la lógica para buscar una canción por una parte del nombre
-        pass
-    elif opcion == "4":
-        # Implementa la lógica para agregar una nueva fila al archivo
-        pass
-    elif opcion == "5":
-        # Implementa la lógica para listar las 10 canciones más largas en formato legible
-        pass
-    elif opcion == "6":
-        # Implementa la lógica para listar los 10 artistas con más reproducciones en total
-        pass
-    elif opcion == "0":
-        # Salir del programa
+    if option == "1":
+        print(f"{constants.GREEN}")
+        list_top_songs(data)
+        print(f"{constants.RESET}")
+    elif option == "2":
+        print(f"{constants.GREEN}")
+        list_best_ratio(data)
+        print(f"{constants.RESET}")
+    elif option == "3":
+        print(f"{constants.GREEN}")
+        search_song(data)
+        print(f"{constants.RESET}")
+    elif option == "4":
+        print(f"{constants.GREEN}")
+        add_new_song(data)
+        print(f"{constants.RESET}")
+    elif option == "5":
+        print(f"{constants.GREEN}")
+        list_longest_songs(data)
+        print(f"{constants.RESET}")
+    elif option == "6":
+        print(f"{constants.GREEN}")
+        list_top_artists(data)
+        print(f"{constants.RESET}")
+    elif option == "7":
         break
     else:
-        print("Opción no válida. Intente de nuevo.")
+        print("Opción no válida. Intente nuevamente.")
