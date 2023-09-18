@@ -1,6 +1,9 @@
-# No se usan expresiones regulares y el index está mal (deberia ser 1149 en vez de 1147)
-import constants
+from tabulate import tabulate
 
 def list_top_songs(data):
     top_songs = data.nlargest(5, ["Likes", "Views", "Comments"])
-    print(top_songs[["Title", "Artist", "Likes", "Views", "Comments"]].to_string(index=False))
+    top_songs.index = top_songs.index + 2
+    
+    table = tabulate(top_songs[["Index", "Title", "Artist", "Likes", "Views", "Comments"]], headers="keys", tablefmt="pretty", showindex=False)
+    
+    print(table)
